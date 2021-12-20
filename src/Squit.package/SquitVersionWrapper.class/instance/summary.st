@@ -6,7 +6,7 @@ summary
 	parents := self item parents collect: [:each | each shortId].
 	author := (self item metadata at: #author), ' <', (self item metadata at: #authorEmail), '>'.
 	committer := (self item metadata at: #committer), ' <', (self item metadata at: #committerEmail), '>'.
-	timeStamp := self item metadata at: #timestamp.
+	timeStamp := (self item metadata at: #timestamp) asLocal.
 	^ message withBlanksTrimmed, String cr, String cr,
 		'Commit: ', commitHash, ', Parents: ', parents asCommaString, String cr,
 		'Author: ', author, String cr,
